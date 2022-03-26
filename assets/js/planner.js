@@ -2,8 +2,7 @@
 
 //color-code each block of time based on whether in past or coming up soon
 // functions needed:
-// save tasks(in the cards)
-//edit tasks
+// save tasks
 //load tasks
 //clear all tasks
 var dateAndTime = document.querySelector("#currentDay");
@@ -15,25 +14,51 @@ var refreshTime = function(){
     dateAndTime.textContent = currentTime.format("MMM Do, YYYY - hh:mm a");
 }
 setInterval(refreshTime, 1000);
-//create cards for each hour of the day - 7-9
 
-// var editTask = function(){
-//      var text = $(this)
-//     .text()
-//     .trim();
+var hour = document.querySelectorAll(".row")
+hour.forEach((hour) => {
+    time = $(hour).attr("id");
+    currentTime = moment().hours();
+    var colorSet = $(hour).children("textarea")
 
-//   var textInput = $("<textarea>")
-//   .addClass("text-center col-12 col-lg-10 border")
-//   .val(text);
+    if (time > currentTime){
+        $(colorSet).removeClass("present");
+        $(colorSet).removeClass("past");
+        $(colorSet).addClass("future");
+    }
+    else if (time < currentTime){
+        $(colorSet).removeClass("present");
+        $(colorSet).removeClass("future");
+        $(colorSet).addClass("past");
+    } else {
+        $(colorSet).removeClass("future");
+        $(colorSet).removeClass("past");
+        $(colorSet).addClass("present");
+    }
+})
 
-//   $(this).replaceWith(textInput);
-//  }
+var loadTasks = function(){
+    taskContainer = document.querySelectorAll(".row");
+
+    taskContainer.forEach((taskContainer) => {
+        var taskId = $(taskContainer).attr("id");
+        var taskText = $(taskContainer).children("textarea");
+
+        var task = localStorage.getItem(taskId);
+
+        $(taskText).text(task);
+    });
+    
+   
+}
+loadTasks();
 
 var saveTask = function(){
     var taskText = $(this).prev().val();
-    var taskHour = $(taskText).prevUntil(".time");
-    console.log(taskHour);
+    var taskHour = $(this).parent().attr("id");
+
+    localStorage.setItem(taskHour, taskText);
+
 }
 
-// $("#text-container").on("click", editTask);
 $("#save-task").on("click", saveTask);

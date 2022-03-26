@@ -10,7 +10,7 @@ textarea{
   resize: none;
   color: #000000;
   /* border-left: 1px solid black; */
-  padding: 10px;
+  /* padding: 10px; */
   justify-content: center;
 }
 
@@ -74,9 +74,3 @@ textarea{
 .container-fluid p {
   margin: auto;
 }
-#p-task {
-width: 100%;
-height: 100%;
-}
-
-/*add hover to save button area so it looks like a click and hover over add task section*/
