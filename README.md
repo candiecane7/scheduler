@@ -1,5 +1,8 @@
 # Work Day Scheduler Starter Code
 
+## Purpose
+This assignment was to create a daily work planner where you can add tasks based on the hour of the day.
+
 ## User Story
 AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
@@ -20,4 +23,12 @@ THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist
 
+## Built With
+HTML, CSS, JQUERY, BOOTSTRAP
+
+## Website
+https://candiecane7.github.io/scheduler/
+
+## Screenshot
+<img src="assets/images/screenshot.png">
 
